@@ -1,0 +1,2 @@
+# GoTour
+make go tour
