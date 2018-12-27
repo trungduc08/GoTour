@@ -1,46 +1,91 @@
 package main
 
-import "fmt"
-
-type Vector struct {
-	X int
-	Y int
-}
-type Vertex struct {
-	Lat, Long float64
-}
-
-// var m map[string]Vertex
-
-var (
-	v1 = Vector{1, 2}  // has type Vertex
-	v2 = Vector{X: 1}  // Y:0 is implicit
-	v3 = Vector{}      // X:0 and Y:0
-	p  = &Vector{1, 2} // has type *Vertex
+import (
+	"fmt"
+	"time"
 )
-var lstMap = map[string]Vertex{
-	"map1": {10.10, 20.20},
-	"map2": {30.30, 40.40},
+
+type I interface {
+	M()
+}
+type T struct {
+	S string
 }
 
-func main() {
-	m := make(map[string]int)
-
-	m["Answer"] = 42
-	fmt.Println("The value:", m["Answer"])
-
-	m["Answer1"] = 48
-	fmt.Println("The value:", m["Answer1"])
-
-	m["Answer2"] = 49
-	fmt.Println("The value:", m["Answer2"])
-
-	m["Answer6"] = 1
-	fmt.Println("The value:", m["Answer6"])
-
-	// delete(m, "Answer")
-	// fmt.Println("The value:", m["Answer"])
-
-	v, ok := m["Answer6"]
-	fmt.Println("The value:", v, "Present?", ok)
+func describe(i I) {
+	fmt.Printf("(%v, %T)\n", i, i)
 }
+func (t *T) M() {
+	if t == nil {
+		fmt.Println("<nil>")
+		return
+	}
+	fmt.Println(t.S)
+}
+
+type F float64
+
+func (f F) M() {
+	fmt.Println(f)
+}
+func Describe(i interface{}) {
+	fmt.Printf("(%v, %T)\n", i, i)
+}
+func Do(i interface{}) {
+	switch v := i.(type) {
+	case int:
+		fmt.Printf("%v x 2 = %v\n", v, v*2)
+	case string:
+		fmt.Printf("%T\n", i)
+	default:
+		fmt.Printf("default")
+	}
+}
+
+type Person struct {
+	name string
+	age  int
+}
+
+func (p Person) String() string {
+	return fmt.Sprintf("%v %v", p.name, p.age)
+}
+
+type MyError struct {
+	when time.Time
+	what string
+}
+
+func (e *MyError) Error() string {
+	return fmt.Sprintf("at %v, %s", e.when, e.what)
+}
+func run() error {
+	return &MyError{
+		time.Now(),
+		"did not work",
+	}
+}
+
+// func main() {
+// 	r := strings.NewReader("Hello, Reader!")
+// 	b := make([]byte, 8)
+
+// 	// for {
+// 	// 	n, err := r.Read(b)
+
+// 	// 	fmt.Printf("n = %v err = %v b = %v\n", n, err, b)
+// 	// 	if err == io.EOF {
+// 	// 		// fmt.Printf("%v \n", n)
+// 	// 		break
+// 	// 	}
+// 	// }
+// 	for i := 0; i < len(b); i++ {
+// 		n, err := r.Read(b)
+// 		fmt.Printf("n = %v err = %v b = (%c)\n", n, err, b)
+// 		fmt.Printf("b[:n] = %q\n", b[:n])
+// 		if err == io.EOF {
+// 			break
+// 		}
+// 	}
+
+// }

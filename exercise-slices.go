@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func Pic(dx, dy int) [][]uint8 {
 	// dx : number of column
 	// dy: number of row
@@ -21,7 +19,8 @@ func Pic(dx, dy int) [][]uint8 {
 	return a
 
 }
-func main() {
-	fmt.Println(Pic(8, 8))
-	// pic.Show(Pic)
-}
+
+// func main() {
+// 	fmt.Println(Pic(8, 8))
+// 	// pic.Show(Pic)
+// }

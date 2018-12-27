@@ -26,12 +26,14 @@ func WordCount(s string) map[string]int {
 	fmt.Println(mm)
 	return mm
 }
-func main() {
-	// fmt.Println(mm1["Google"])
-	WordCount("trung duc trung du")
-	// var a = []int{1, 2, 4, 8, 16, 32, 64}
-	// for i, v := range a {
-	// 	fmt.Println("2^", i, "=", v)
-	// }
 
-}
+// func main() {
+
+// 	// fmt.Println(mm1["Google"])
+// 	// WordCount("trung duc trung du")
+// 	// var a = []int{1, 2, 4, 8, 16, 32, 64}
+// 	// for i, v := range a {
+// 	// 	fmt.Println("2^", i, "=", v)
+// 	// }
+
+// }

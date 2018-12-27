@@ -1,21 +1,20 @@
 package main
 
 import (
-	"fmt"
 	"math"
 )
 
-const EPSILON = 0.0000000001
+// const EPSILON = 0.0000000001
 
-func Sqrt(x float64) float64 {
-	z := float64(x)
-	for i := 0; i < 10; i++ {
-		z -= (z*z - x) / (2 * z)
-		fmt.Println(z)
+// func Sqrt(x float64) float64 {
+// 	z := float64(x)
+// 	for i := 0; i < 10; i++ {
+// 		z -= (z*z - x) / (2 * z)
+// 		fmt.Println(z)
 
-	}
-	return z
-}
+// 	}
+// 	return z
+// }
 
 func SqrtAddCoditional(x float64) float64 {
 	z := float64(1)
@@ -25,9 +24,10 @@ func SqrtAddCoditional(x float64) float64 {
 	}
 	return z
 }
-func main() {
-	fmt.Println(Sqrt(8))
-	fmt.Println("--------------")
-	fmt.Println(SqrtAddCoditional(8))
 
-}
+// func main() {
+// 	fmt.Println(Sqrt(8))
+// 	fmt.Println("--------------")
+// 	fmt.Println(SqrtAddCoditional(8))
+
+// }
