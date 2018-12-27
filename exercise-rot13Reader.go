@@ -30,12 +30,13 @@ func ConvertAcstoInt(s *strings.Reader) []byte {
 	}
 	return c
 }
-func main() {
-	s := strings.NewReader("ABCDEFGH")
-	b := ConvertAcstoInt(s)
-	fmt.Println(b)
-	fmt.Println("-----------------")
-	rot := rot13Reader{s}
-	rot.Read(b)
 
-}
+// func main() {
+// 	s := strings.NewReader("ABCDEFGH")
+// 	b := ConvertAcstoInt(s)
+// 	fmt.Println(b)
+// 	fmt.Println("-----------------")
+// 	rot := rot13Reader{s}
+// 	rot.Read(b)
+
+// }
