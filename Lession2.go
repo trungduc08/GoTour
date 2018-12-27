@@ -65,27 +65,50 @@ func run() error {
 		"did not work",
 	}
 }
+func SumGo(s []int, c chan int) chan int {
+	sum := 0
+	for _, v := range s {
+		sum += v
+	}
+	c <- sum
+	// fmt.Println(c)
+	return c
+}
+func GoFibonaci(c, quit chan int) {
+	x, y := 0, 1
+	for {
+		select {
+		case c <- x:
+			x, y = y, x+y
+		case <-quit:
+			fmt.Println("quit")
+			return
+		}
+	}
 
-// func main() {
-// 	r := strings.NewReader("Hello, Reader!")
-// 	b := make([]byte, 8)
-
-// 	// for {
-// 	// 	n, err := r.Read(b)
-
-// 	// 	fmt.Printf("n = %v err = %v b = %v\n", n, err, b)
-// 	// 	if err == io.EOF {
-// 	// 		// fmt.Printf("%v \n", n)
-// 	// 		break
-// 	// 	}
-// 	// }
-// 	for i := 0; i < len(b); i++ {
-// 		n, err := r.Read(b)
-// 		fmt.Printf("n = %v err = %v b = (%c)\n", n, err, b)
-// 		fmt.Printf("b[:n] = %q\n", b[:n])
-// 		if err == io.EOF {
-// 			break
-// 		}
-// 	}
-
-// }
+}
+func main() {
+	// c := make(chan int)
+	// quit := make(chan int)
+	// go func() {
+	// 	for i := 0; i < 10; i++ {
+	// 		fmt.Println(<-c)
+	// 	}
+	// 	quit <- 0
+	// }()
+	// GoFibonaci(c, quit)
+	tick := time.Tick(100 * time.Millisecond)
+	boom := time.After(500 * time.Millisecond)
+	for {
+		select {
+		case <-tick:
+			fmt.Println("tick.")
+		case <-boom:
+			fmt.Println("BOOM!")
+			return
+		default:
+			fmt.Println("    .")
+			time.Sleep(50 * time.Millisecond)
+		}
+	}
+}
