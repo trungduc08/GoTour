@@ -11,9 +11,18 @@ func fibonacci() func() int {
 	}
 }
 
+func PrintFiBonaci(n int) (arr []int) {
+	f := fibonacci()
+	if n < 0 {
+		return nil
+	}
+	for i := 0; i < n; i++ {
+		arr = append(arr, f())
+	}
+	return arr
+
+}
+
 // func main() {
-// 	f := fibonacci()
-// 	for i := 0; i < 10; i++ {
-// 		fmt.Println(f())
-// 	}
+// 	fmt.Println(PrintFiBonaci(5))
 // }

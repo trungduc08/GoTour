@@ -5,7 +5,7 @@ import (
 	"math"
 )
 
-const EPSILON = 0.0000000001
+// const EPSILON = 0.0000000001
 
 type ErrNegativeSqrt float64
 

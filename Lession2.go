@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sync"
 	"time"
 )
 
@@ -87,28 +88,52 @@ func GoFibonaci(c, quit chan int) {
 	}
 
 }
-func main() {
-	// c := make(chan int)
-	// quit := make(chan int)
-	// go func() {
-	// 	for i := 0; i < 10; i++ {
-	// 		fmt.Println(<-c)
-	// 	}
-	// 	quit <- 0
-	// }()
-	// GoFibonaci(c, quit)
-	tick := time.Tick(100 * time.Millisecond)
-	boom := time.After(500 * time.Millisecond)
-	for {
-		select {
-		case <-tick:
-			fmt.Println("tick.")
-		case <-boom:
-			fmt.Println("BOOM!")
-			return
-		default:
-			fmt.Println("    .")
-			time.Sleep(50 * time.Millisecond)
-		}
-	}
+
+type SafeController struct {
+	v   map[string]int
+	mux sync.Mutex
 }
+
+func (c *SafeController) Inc(key string) {
+	c.mux.Lock()
+	c.v[key]++
+	c.mux.Unlock()
+}
+func (c *SafeController) Value(key string) int {
+	c.mux.Lock()
+	return 1
+
+}
+
+var x int = 0
+
+func Add(m *sync.Mutex) {
+	m.Lock()
+	x += 1
+	m.Unlock()
+}
+func numbers(m *sync.Mutex) {
+	m.Lock()
+	for i := 0; i < 5; i++ {
+		time.Sleep(100 * time.Millisecond)
+		fmt.Println(i)
+	}
+	m.Unlock()
+
+}
+func alphabet(m *sync.Mutex) {
+	m.Lock()
+	for i := 'a'; i < 'f'; i++ {
+		time.Sleep(200 * time.Millisecond)
+		fmt.Printf("%c\n", i)
+	}
+	m.Unlock()
+}
+
+// func main() {
+// 	var m sync.Mutex
+// 	go numbers(&m)
+// 	go alphabet(&m)
+// 	time.Sleep(10000 * time.Millisecond)
+// 	fmt.Println("finish")
+// }

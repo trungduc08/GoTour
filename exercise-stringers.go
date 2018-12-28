@@ -19,14 +19,34 @@ func ConvertIPAdress(_map map[string]IPAddr) string {
 	return src
 }
 
+type ListInput map[int]ListIP
+type ListIP map[string]IPAddr
+
 // func main() {
+
 // 	hosts := map[string]IPAddr{
 // 		"loopback":  {127, 0, 0, 1},
 // 		"googleDNS": {8, 8, 8, 8},
 // 	}
-// 	fmt.Println(ConvertIPAdress(hosts))
+// 	want := "loopback: 127.0.0.1\ngoogleDNS: 8.8.8.8"
+// 	input := ConvertIPAdress(hosts)
+// 	// fmt.Println(hosts)
+// 	fmt.Println(input)
+// 	fmt.Println(want)
+// 	if !CompareString(want, input) {
+// 		fmt.Println("fa")
+// 	} else {
+// 		fmt.Println("true")
+// 	}
 // 	// for i, _ := range hosts {
 // 	// 	fmt.Printf("%v: %v\n", i, hosts[i])
 // 	// }
 
 // }
+func CompareString(s1, s2 string) bool {
+	if s1 != s2 {
+		return false
+	}
+	return true
+
+}

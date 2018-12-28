@@ -30,7 +30,7 @@ func WordCount(s string) map[string]int {
 // func main() {
 
 // 	// fmt.Println(mm1["Google"])
-// 	// WordCount("trung duc trung du")
+// 	WordCount("trung duc trung du")
 // 	// var a = []int{1, 2, 4, 8, 16, 32, 64}
 // 	// for i, v := range a {
 // 	// 	fmt.Println("2^", i, "=", v)

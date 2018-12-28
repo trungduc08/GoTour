@@ -4,7 +4,7 @@ import (
 	"math"
 )
 
-// const EPSILON = 0.0000000001
+const EPSILON = 0.0000000001
 
 // func Sqrt(x float64) float64 {
 // 	z := float64(x)
@@ -26,8 +26,8 @@ func SqrtAddCoditional(x float64) float64 {
 }
 
 // func main() {
-// 	fmt.Println(Sqrt(8))
+// 	fmt.Println(math.Sqrt(4))
 // 	fmt.Println("--------------")
-// 	fmt.Println(SqrtAddCoditional(8))
+// 	fmt.Println(SqrtAddCoditional(4))
 
 // }
