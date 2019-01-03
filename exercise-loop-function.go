@@ -4,7 +4,7 @@ import (
 	"math"
 )
 
-const EPSILON = 0.0000000001
+// const EPSILON = 0.0000000001
 
 // func Sqrt(x float64) float64 {
 // 	z := float64(x)

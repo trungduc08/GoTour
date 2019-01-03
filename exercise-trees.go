@@ -47,12 +47,7 @@ func CheckSame(t1, t2 *tree.Tree) bool {
 
 // func main() {
 // 	ch := make(chan int)
-// 	treeTest := tree.New(1)
-// 	go Walk(treeTest, ch)
-// 	fmt.Println(treeTest.String())
-// 	fmt.Println("----------")
-// 	s := rand.Perm(10)
-// 	fmt.Println(s)
+// 	go Walk(tree.New(1), ch)
 // 	for {
 // 		i, valid := <-ch
 // 		if !valid {
@@ -60,11 +55,4 @@ func CheckSame(t1, t2 *tree.Tree) bool {
 // 		}
 // 		fmt.Println(i)
 // 	}
-// 	fmt.Println(CheckSame(tree.New(1), tree.New(2)))
-// 	// ch := make(chan int, 2)
-// 	// ch <- 1
-// 	// ch <- 2
-// 	// fmt.Println(<-ch)
-// 	// fmt.Println(<-ch)
-
 // }

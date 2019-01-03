@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"io"
 	"strings"
 )
@@ -14,7 +13,7 @@ func (rot rot13Reader) Read(p []byte) (n int, err error) {
 	n, err = rot.r.Read(p)
 	for i := 0; i < len(p); i++ {
 		p[i] = p[i] + 1
-		fmt.Printf("p[%v] = %q\n", i, p[i])
+		// fmt.Printf("p[%v] = %q\n", i, p[i])
 	}
 
 	return len(p), err
@@ -34,9 +33,11 @@ func ConvertAcstoInt(s *strings.Reader) []byte {
 // func main() {
 // 	s := strings.NewReader("ABCDEFGH")
 // 	b := ConvertAcstoInt(s)
-// 	fmt.Println(b)
-// 	fmt.Println("-----------------")
+// 	// fmt.Println(b)
+// 	// fmt.Println(b)
+// 	// fmt.Println("-----------------")
 // 	rot := rot13Reader{s}
 // 	rot.Read(b)
+// 	fmt.Println(string(b))
 
 // }

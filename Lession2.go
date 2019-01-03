@@ -131,9 +131,34 @@ func alphabet(m *sync.Mutex) {
 }
 
 // func main() {
-// 	var m sync.Mutex
-// 	go numbers(&m)
-// 	go alphabet(&m)
-// 	time.Sleep(10000 * time.Millisecond)
-// 	fmt.Println("finish")
+// 	// var m sync.Mutex
+// 	// go numbers(&m)
+// 	// go alphabet(&m)
+// 	// time.Sleep(10000 * time.Millisecond)
+// 	// fmt.Println("finish")
+
+// 	naturals := make(chan int)
+// 	squares := make(chan int)
+// 	// Counter
+// 	go func() {
+// 		for x := 0; x < 8; x++ {
+// 			naturals <- x
+// 		}
+// 		close(naturals)
+// 	}()
+// 	// Squarer
+// 	go func() {
+// 		for {
+// 			x, ok := <-naturals
+// 			if !ok {
+// 				break
+// 			}
+// 			squares <- x * x
+// 		}
+// 		close(squares)
+// 	}()
+// 	// Printer (in main goroutine)
+// 	for value := range squares {
+// 		fmt.Println(value)
+// 	}
 // }
